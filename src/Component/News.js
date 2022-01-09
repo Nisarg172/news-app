@@ -15,6 +15,7 @@ export default class News extends Component {
     PropTypes = {
         country: PropTypes.string,
         category: PropTypes.string,
+        
     }
 
     constructor() {
@@ -55,23 +56,31 @@ export default class News extends Component {
     };
 
     fetchMoreData = async() => {
-       
+            
+           
             this.setState({ page: this.state.page + 1 })
             let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=abd2d242a9c2476585963ed6e6b20af5&page=${this.state.page}&pageSize=20`;
+           
             let data = await fetch(url);
             let jsondata = await data.json();
+           
             this.setState({ article: this.state.article.concat(jsondata.articles), totalResult: jsondata.totalResults });
+            
             
       
     };
 
     async loadeData() {
+        this.props.setprogress(10);
         //262ffd01fcf14ae3ae2c6bab7bb1f7af
         //abd2d242a9c2476585963ed6e6b20af5
         let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=abd2d242a9c2476585963ed6e6b20af5&page=${this.state.page}&pageSize=20`;
+        this.props.setprogress(20);
         let data = await fetch(url);
         let jsondata = await data.json();
+        this.props.setprogress(60);
         this.setState({ article: jsondata.articles, totalResult: jsondata.totalResults });
+        this.props.setprogress(100);
       //  console.log("hello" + url);
     }
 
@@ -79,8 +88,8 @@ export default class News extends Component {
         return (
             <>
 
-                <div className="container my-3  " >
-                    <h1 className="text-center">News app - {this.props.category.toUpperCase()}</h1>
+                <div className="container my-2  " >
+                    <h1 className="text-center text-white"> News app - {this.props.category.toUpperCase()}</h1>
 
 
                     <InfiniteScroll
