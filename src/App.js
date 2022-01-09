@@ -19,6 +19,7 @@ function App() {
 
       <BrowserRouter>
         <Navebar />
+
         <Routes>
           <Route path="/" element={<News category="general" />} />
           <Route exact  path="/business" element={<News key="business" category="business" />} />
