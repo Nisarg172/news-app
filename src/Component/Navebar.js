@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 export default class Navebar extends Component {
     render() {
         return (
-           <>
-                <nav className="navbar navbar-dark bg-dark navbar-expand-lg  bg-light sticky-top ">
-                    <a className="navbar-brand " href="/">News app</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <>
+                <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-light sticky-top p-2 ">
+                    <a className="navbar-brand  " href="/" >News app</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
@@ -36,8 +36,11 @@ export default class Navebar extends Component {
                             </ul>
                         </ul>
                     </div>
-                </nav>
-                </>
+                </nav> 
+
+
+            </>
+
 
 
         )

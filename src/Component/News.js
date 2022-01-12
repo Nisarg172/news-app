@@ -74,7 +74,8 @@ export default class News extends Component {
         this.props.setprogress(10);
         //262ffd01fcf14ae3ae2c6bab7bb1f7af
         //abd2d242a9c2476585963ed6e6b20af5
-        let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=abd2d242a9c2476585963ed6e6b20af5&page=${this.state.page}&pageSize=20`;
+         let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=abd2d242a9c2476585963ed6e6b20af5&page=${this.state.page}&pageSize=20`;
+        
         this.props.setprogress(20);
         let data = await fetch(url);
         let jsondata = await data.json();
@@ -89,7 +90,7 @@ export default class News extends Component {
             <>
 
                 <div className="container my-2  " >
-                    <h1 className="text-center text-white"> News app - {this.props.category.toUpperCase()}</h1>
+                    <h2 className="text-center text-white"> News app - {this.props.category.toUpperCase()}</h2>
 
 
                     <InfiniteScroll
@@ -107,6 +108,7 @@ export default class News extends Component {
                                         description={element.description ? element.description.slice(0, 88) + "..." : "Description is not avaible....."}
                                         title={element.title ? element.title.slice(0, 44) + "..." : "Title is not avaible....."}
                                         url={element.url}
+                                        source={element.source.name}
                                     />
                                 </div>
 
