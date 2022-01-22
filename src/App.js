@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Navebar from './Component/Navebar';
 import News from './Component/News';
 import {
@@ -12,44 +12,47 @@ import {
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar';
 
-export default class App extends Component {
+const App=()=>{
 
-  state = {
-    progress: 20
-  }
-  setprogress = (progress) => {
-    this.setState({ progress: progress })
-  }
-  render() {
+  const api = process.env.REACT_APP_API_KEY;
+  
+  const [progress ,setprogress] = useState(0)
+ 
+
+ 
     return (
 
-      <div  style={{backgroundColor: "#041C32"}}>
+      <div style={{ backgroundColor: "#041C32" }}>
 
 
         <BrowserRouter>
-       
+
           <LoadingBar
             color='linear-gradient(135deg,#FF1700,#FFE400,#06FF00)'
-            progress={this.state.progress}
+            progress={progress}
             height={3}
           />
-           <Navebar />
+          <Navebar />
 
 
           <Routes>
-            <Route path="/" element={<News setprogress={this.setprogress} category="general" />} />
-            <Route exact path="/business" element={<News setprogress={this.setprogress} key="business" category="business" />} />
-            <Route exact path="/entertainment" element={<News setprogress={this.setprogress} key="entertainment" category="entertainment" />} />
-            <Route exact path="/science" element={<News setprogress={this.setprogress} key="science" category="science" />} />
-            <Route exact path="/health" element={<News setprogress={this.setprogress} key="health" category="health" />} />
-            <Route exact path="/sports" element={<News setprogress={this.setprogress} key="sports" category="sports" />} />
-            <Route exact path="/technology" element={<News setprogress={this.setprogress} key="technology" category="technology" />} />
+            <Route path="/" key="general" element={<News api={api} setprogress={setprogress} category="general" />} />
+            <Route exact path="/business" element={<News api={api} setprogress={setprogress} key="business" category="business" />} />
+            <Route exact path="/entertainment" element={<News api={api} setprogress={setprogress} key="entertainment" category="entertainment" />} />
+            <Route exact path="/science" element={<News api={api} setprogress={setprogress} key="science" category="science" />} />
+            <Route exact path="/health" element={<News api={api} setprogress={setprogress} key="health" category="health" />} />
+            <Route exact path="/sports" element={<News api={api} setprogress={setprogress} key="sports" category="sports" />} />
+            <Route exact path="/technology" element={<News api={api} setprogress={setprogress} key="technology" category="technology" />}
+            />
+           
 
           </Routes>
         </BrowserRouter>
       </div>
 
     );
-  }
+  
 }
+
+export default App;
 

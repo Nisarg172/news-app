@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
 
-export default class Navebar extends Component {
-    render() {
+
+const Navebar = ()=> {
+    
         return (
             <>
                 <nav className="navbar navbar-dark bg-dark navbar-expand-lg bg-light sticky-top p-2 ">
@@ -33,10 +34,15 @@ export default class Navebar extends Component {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/technology">Technology</Link></li>
 
+                               
+
+
+
+
                             </ul>
                         </ul>
                     </div>
-                </nav> 
+                </nav>
 
 
             </>
@@ -45,6 +51,6 @@ export default class Navebar extends Component {
 
         )
     }
-}
+export default Navebar
 
 
